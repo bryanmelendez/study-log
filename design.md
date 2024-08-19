@@ -18,7 +18,7 @@ Log: (brief but detailed description of what I did during that time)
 
 # Pomodoro support?
 I think I'm just going to assume that pomodoro is being handled separately \
-and any breaks during the session will just be 
+and any breaks during the session will just be ignored
 
 # Core features 
 - display a timer that updates in real time
