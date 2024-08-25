@@ -10,6 +10,8 @@ tags: []
 - lua??
 
 # Format
+Session #{num} \
+Session date: {date} \
 Session started at: {time} \ 
 Session ended at: {time} \ 
 Session length: {length} \
@@ -28,10 +30,6 @@ let you enter the description of what you worked on
 
 The idea is that I would just have this open in an inactive tmux window \
 which is different that I was planning on last time I tried this. 
-
-# Notes
-- Also might want to rebrand this to "study-log" to emphasize that \
-this is primarily for my studies, not just random work
 
 # Ideas for more features
 - habit tracker - github commit diagram thing but for visually \
