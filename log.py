@@ -13,7 +13,6 @@ sw.start()
 sw.print_stats()
 
 log = {
-        # convert these to strings
         "start time": sw.format_start_time,
         "end time": sw.format_end_time,
         "elapsed time": sw.format_elapsed_time

@@ -1,6 +1,5 @@
 import time
 import datetime
-import os
 
 
 class Stopwatch:
@@ -28,11 +27,10 @@ class Stopwatch:
         self.calc_stats()
 
     def calc_stats(self):
-        self.format_start_time = datetime.datetime.fromtimestamp(int(self.start_time)).time()
-        self.format_end_time = datetime.datetime.fromtimestamp(int(self.end_time)).time()
-        self.format_elapsed_time = datetime.timedelta(seconds=int(self.elapsed_time))
+        self.format_start_time = datetime.datetime.fromtimestamp(int(self.start_time)).time().strftime('%H:%M:%S')
+        self.format_end_time = datetime.datetime.fromtimestamp(int(self.end_time)).time().strftime('%H:%M:%S')
+        self.format_elapsed_time = str(datetime.timedelta(seconds=int(self.elapsed_time)))
 
-    # move this to other module
     def print_stats(self):
         print("\nSession started at: ", self.format_start_time)
         print("Session ended at: ", self.format_end_time)
