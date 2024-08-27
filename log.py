@@ -14,7 +14,6 @@ class Log:
         sw = Stopwatch()
 
         sw.start()
-        sw.print_stats()
 
         if os.path.exists(self.log_file):
             os.rename(self.log_file, self.backup_file)
@@ -23,7 +22,6 @@ class Log:
 
             # get the previous session number
             self.session = self.backup[0]["session"]
-            print("Session: ", self.session)
 
         # creates new list to be written to file
         log = list()
@@ -41,14 +39,25 @@ class Log:
         # append old list to new list
         if self.backup:
             log = log + self.backup
-        print(log)
 
         json_object = json.dumps(log, indent=4)
 
         with open(self.log_file, "a") as outfile:
             outfile.write(json_object)
 
+        self.print_stats(sw)
+
+        input("\nPress enter to fill in log...")
+
         os.system("nvim study_log.json")
+
+    def print_stats(self, sw):
+        print("\n\nSession: ", self.session)
+        print("Date: ", sw.date_string)
+        print("Session started at: ", sw.format_start_time)
+        print("Session ended at: ", sw.format_end_time)
+        print("Session length: ", sw.format_elapsed_time)
+        print()
 
 
 def main():
