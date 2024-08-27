@@ -48,7 +48,6 @@ class Log:
         self.print_stats(sw)
 
         input("\nPress enter to fill in log...")
-
         os.system("nvim study_log.json")
 
     def print_stats(self, sw):
