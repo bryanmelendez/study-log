@@ -15,7 +15,8 @@ sw.print_stats()
 log = {
         "start time": sw.format_start_time,
         "end time": sw.format_end_time,
-        "elapsed time": sw.format_elapsed_time
+        "elapsed time": sw.format_elapsed_time,
+        "description": "",
 }
 
 if os.path.exists(log_file):
@@ -30,3 +31,5 @@ with open(log_file, "a") as outfile:
     if backup:
         outfile.write("\n")
         outfile.write(backup)
+
+os.system("nvim study_log.json")
