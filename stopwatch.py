@@ -10,6 +10,7 @@ class Stopwatch:
         self.format_elapsed_time = None
         self.format_start_time = None
         self.format_end_time = None
+        self.date_string = None
 
     def start(self):
         # Run stopwatch until user enters ctrl-c
@@ -30,6 +31,8 @@ class Stopwatch:
         self.format_start_time = datetime.datetime.fromtimestamp(int(self.start_time)).time().strftime('%H:%M:%S')
         self.format_end_time = datetime.datetime.fromtimestamp(int(self.end_time)).time().strftime('%H:%M:%S')
         self.format_elapsed_time = str(datetime.timedelta(seconds=int(self.elapsed_time)))
+
+        self.date_string = datetime.datetime.now().strftime("%m/%d/%Y")
 
     def print_stats(self):
         print("\nSession started at: ", self.format_start_time)
