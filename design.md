@@ -6,8 +6,6 @@ tags: []
 
 # Possible languages
 - python
-- bash
-- lua??
 
 # Format
 Session #{num} \
@@ -34,3 +32,6 @@ which is different that I was planning on last time I tried this.
 # Ideas for more features
 - habit tracker - github commit diagram thing but for visually \
 tracking sessions
+- better stats, e.g. number of sessions this week or total time studying
+- Make a JSON file for options (save file location, goals to be displayed, \ 
+subjects, etc)

@@ -8,7 +8,19 @@ class Log:
         self.log_file = "study_log.json"
         self.backup_file = "backup_study_log.json"
         self.backup = None
+        self.subject = None
         self.session = 0
+
+    def menu(self):
+        # example
+        subjects = ['programming', 'math']
+
+        print("Subjects:")
+        for i in range(0, len(subjects)):
+            print("{}. {}".format(i+1, subjects[i]))
+        choice = int(input("Which subject are you studying?\t"))
+        if choice > 0 and choice <= len(subjects):
+            self.subject = subjects[choice-1]
 
     def start_session(self):
         sw = Stopwatch()
@@ -26,12 +38,14 @@ class Log:
         # creates new list to be written to file
         log = list()
 
+        self.session = self.session+1
         log_entry = {
-                "session": self.session+1,
+                "session": self.session,
                 "date": sw.date_string,
                 "start time": sw.format_start_time,
                 "end time": sw.format_end_time,
                 "elapsed time": sw.format_elapsed_time,
+                "subject": self.subject,
                 "description": "",
         }
 
@@ -61,6 +75,7 @@ class Log:
 
 def main():
     log = Log()
+    log.menu()
     log.start_session()
 
 
