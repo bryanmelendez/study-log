@@ -49,8 +49,7 @@ class Log:
                 "Session ended at": sw.format_end_time,
                 "Session length": sw.format_elapsed_time,
                 "Subject": self.subject,
-                "Log": '''
-                ''',
+                "Log": ' ',
         }
 
         self.log.append(log_entry)
@@ -87,7 +86,7 @@ def main():
 
     if (debug):
         stats = StudyStats()
-        description = stats.getDescription(log_array=log.log, session_id=19)
+        description = stats.getDescription(log_array=log.log, session_id=22)
         print(description)
 
 
