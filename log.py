@@ -1,15 +1,18 @@
-import json
+import yaml
 import os
+from study_stats import StudyStats
 from stopwatch import Stopwatch
 
 
 class Log:
     def __init__(self):
-        self.log_file = "study_log.json"
-        self.backup_file = "backup_study_log.json"
+        self.log_file = "study_log.yaml"
+        self.backup_file = "backup_study_log.yaml"
         self.backup = None
         self.subject = None
         self.session = 0
+        self.log = None
+        self.yaml_object = None
 
     def menu(self):
         # example
@@ -30,39 +33,41 @@ class Log:
         if os.path.exists(self.log_file):
             os.rename(self.log_file, self.backup_file)
             with open(self.backup_file, "r") as infile:
-                self.backup = json.load(infile)
+                self.backup = yaml.safe_load(infile)
 
             # get the previous session number
-            self.session = self.backup[0]["session"]
+            self.session = self.backup[0]["Session"]
 
         # creates new list to be written to file
-        log = list()
+        self.log = list()
 
         self.session = self.session+1
         log_entry = {
-                "session": self.session,
-                "date": sw.date_string,
-                "start time": sw.format_start_time,
-                "end time": sw.format_end_time,
-                "elapsed time": sw.format_elapsed_time,
-                "subject": self.subject,
-                "description": "",
+                "Session": self.session,
+                "Date": sw.date_string,
+                "Session started at": sw.format_start_time,
+                "Session ended at": sw.format_end_time,
+                "Session length": sw.format_elapsed_time,
+                "Subject": self.subject,
+                "Log": '''
+                ''',
         }
 
-        log.append(log_entry)
+        self.log.append(log_entry)
+
         # append old list to new list
         if self.backup:
-            log = log + self.backup
+            self.log = self.log + self.backup
 
-        json_object = json.dumps(log, indent=4)
+        self.yaml_object = yaml.dump(self.log, sort_keys=False)
 
         with open(self.log_file, "a") as outfile:
-            outfile.write(json_object)
+            outfile.write(self.yaml_object)
 
         self.print_stats(sw)
 
         input("\nPress enter to fill in log...")
-        os.system("nvim study_log.json")
+        os.system("nvim study_log.yaml")
 
     def print_stats(self, sw):
         print("\n\nSession: ", self.session)
@@ -74,9 +79,16 @@ class Log:
 
 
 def main():
+    debug = True
+
     log = Log()
     log.menu()
     log.start_session()
+
+    if (debug):
+        stats = StudyStats()
+        description = stats.getDescription(log_array=log.log, session_id=19)
+        print(description)
 
 
 if __name__ == "__main__":
