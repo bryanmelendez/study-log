@@ -48,7 +48,7 @@ class Stopwatch:
                   ''')
 
             while True:
-                pass
+                time.sleep(0.1)
 
         except KeyboardInterrupt:
             self.end_time = time.time()

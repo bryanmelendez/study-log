@@ -21,8 +21,11 @@ class Log:
         print("Subjects:")
         for i in range(0, len(subjects)):
             print("{}. {}".format(i+1, subjects[i]))
+        print("4. Quit")
         choice = int(input("Which subject are you studying?\t"))
-        if choice > 0 and choice <= len(subjects):
+        if choice == 4:
+            exit()
+        elif choice > 0 and choice <= len(subjects):
             self.subject = subjects[choice-1]
 
     def start_session(self):
@@ -78,7 +81,7 @@ class Log:
 
 
 def main():
-    debug = True
+    debug = False
 
     log = Log()
     log.menu()
@@ -86,7 +89,7 @@ def main():
 
     if (debug):
         stats = StudyStats()
-        description = stats.getDescription(log_array=log.log, session_id=22)
+        description = stats.getDescription(log_array=log.log, session_id=1)
         print(description)
 
 
