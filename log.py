@@ -16,7 +16,7 @@ class Log:
 
     def menu(self):
         # example
-        subjects = ['programming', 'other']
+        subjects = ['programming', 'hardware', 'other']
 
         print("Subjects:")
         for i in range(0, len(subjects)):
