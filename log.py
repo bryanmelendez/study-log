@@ -9,6 +9,7 @@ class Log:
         self.log_file = "study_log.yaml"
         self.backup_file = "backup_study_log.yaml"
         self.backup = None
+        self.backup_text = None
         self.subject = None
         self.session = 0
         self.log = None
@@ -33,10 +34,17 @@ class Log:
 
         sw.start()
 
+        # rename the log file to backup file
+        # then read from the backup
         if os.path.exists(self.log_file):
             os.rename(self.log_file, self.backup_file)
+            # this file read is for the yaml load
             with open(self.backup_file, "r") as infile:
                 self.backup = yaml.safe_load(infile)
+
+            # this file read is for the utf-8 string load
+            with open(self.backup_file, "r", encoding='utf-8') as text_file:
+                self.backup_text = text_file.read()
 
             # get the previous session number
             self.session = self.backup[0]["Session"]
@@ -57,14 +65,13 @@ class Log:
 
         self.log.append(log_entry)
 
-        # append old list to new list
-        if self.backup:
-            self.log = self.log + self.backup
-
         self.yaml_object = yaml.dump(self.log, sort_keys=False)
 
         with open(self.log_file, "a") as outfile:
             outfile.write(self.yaml_object)
+            outfile.write('\n')
+            if self.backup_text:
+                outfile.write(self.backup_text)
 
         self.print_stats(sw)
 

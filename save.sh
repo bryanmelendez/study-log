@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SAVE_PATH="$notes/1-personal/study-log/"
+SAVE_PATH="$notes/1-personal/study-log"
 
 if [ -f "$SAVE_PATH/study_log.md" ]; then
     echo "Creating a backup"
@@ -8,4 +8,4 @@ if [ -f "$SAVE_PATH/study_log.md" ]; then
 fi
 echo "Saving file to $SAVE_PATH"
 cp -v study_log.yaml $SAVE_PATH
-mv -v $notes/1-personal/study-log/study_log.yaml $notes/1-personal/study-log/study_log.md
+mv -v $SAVE_PATH/study_log.yaml $SAVE_PATH/study_log.md

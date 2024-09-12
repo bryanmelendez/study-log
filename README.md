@@ -7,5 +7,10 @@ Simple script for automatically tracking work sessions
 - [ ] implement a settings file to let you specify study topics
 
 # What to do to finish core functionality
-- [ ] spaces between yaml file entries
-- [ ] block text gets messed up when processing old log entries
+- [x] spaces between yaml file entries
+- [x] block text gets messed up when processing old log entries
+- [x] display the current elapsed time in the terminal
+
+
+# Usage (as of right now)
+- Edit the SAVE_PATH var in save.sh script 
