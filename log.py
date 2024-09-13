@@ -2,6 +2,7 @@ import yaml
 import os
 from study_stats import StudyStats
 from stopwatch import Stopwatch
+from settings import Settings
 
 
 class Log:
@@ -17,17 +18,18 @@ class Log:
 
     def menu(self):
         # example
-        subjects = ['programming', 'hardware', 'other']
+        settings = Settings()
+        settings.get_settings()
 
         print("Subjects:")
-        for i in range(0, len(subjects)):
-            print("{}. {}".format(i+1, subjects[i]))
+        for i in range(0, len(settings.subjects)):
+            print("{}. {}".format(i+1, settings.subjects[i]))
         print("4. Quit")
         choice = int(input("Which subject are you studying?\t"))
         if choice == 4:
             exit()
-        elif choice > 0 and choice <= len(subjects):
-            self.subject = subjects[choice-1]
+        elif choice > 0 and choice <= len(settings.subjects):
+            self.subject = settings.subjects[choice-1]
 
     def start_session(self):
         sw = Stopwatch()

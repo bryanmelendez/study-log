@@ -1,4 +1,4 @@
-import json
+import yaml
 
 
 class Settings:
@@ -6,5 +6,14 @@ class Settings:
         self.subjects = list()
         self.save_path = None
         self.goal = None
+        self.settings_file = "settings.yaml"
 
-    # Read from settings.json
+    # Read from settings.yaml
+
+    def get_settings(self):
+        settings = dict()
+
+        with open(self.settings_file, "r") as infile:
+            settings = yaml.safe_load(infile)
+
+        self.subjects = settings["subjects"]
