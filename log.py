@@ -24,9 +24,12 @@ class Log:
         print("Subjects:")
         for i in range(0, len(settings.subjects)):
             print("{}. {}".format(i+1, settings.subjects[i]))
-        print("4. Quit")
+
+        quit_num = len(settings.subjects)+1
+        print("{}. Quit".format(quit_num))
+
         choice = int(input("Which subject are you studying?\t"))
-        if choice == 4:
+        if choice == quit_num:
             exit()
         elif choice > 0 and choice <= len(settings.subjects):
             self.subject = settings.subjects[choice-1]

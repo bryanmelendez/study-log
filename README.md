@@ -1,16 +1,19 @@
-Simple script for automatically tracking work sessions
+This is a CLI interface for tracking study/work sessions. This includes a basic \
+stopwatch and will automatically log start/end times as well as total time. \
+The data is stored as a .yaml file to maintain organization and accessibility of \
+the data, as well as for readability. Seperate from this program, I save a copy \
+of the outputted .yaml log as a .md file to keep in my personal notes system. \
+
+# Dependencies
+- PyYaml
+
+# Usage (as of right now)
+- Edit the SAVE_PATH var in save.sh script 
+- Run ```python log.py``` in your python environment
+- Run ```python study_stats.py``` to calculate your study stats (not finished)
 
 # TODO
 - [x] basic yaml file log
 - [x] display the elasped time in terminal
 - [ ] implement stats to track total time, weekly sessions, etc
-- [ ] implement a settings file to let you specify study topics
-
-# What to do to finish core functionality
-- [x] spaces between yaml file entries
-- [x] block text gets messed up when processing old log entries
-- [x] display the current elapsed time in the terminal
-
-
-# Usage (as of right now)
-- Edit the SAVE_PATH var in save.sh script 
+- [ ] implement a settings file to let you specify study topics and other options
