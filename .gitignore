@@ -1,4 +1,6 @@
 __pycache__
-*.yaml
 venv
 save
+backup_study_log.yaml
+study_log.yaml
+study_stats.yaml
