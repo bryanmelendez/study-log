@@ -17,3 +17,7 @@ of the outputted .yaml log as a .md file to keep in my personal notes system. \
 - [x] display the elasped time in terminal
 - [ ] implement stats to track total time, weekly sessions, etc
 - [ ] implement a settings file to let you specify study topics and other options
+
+# Ideas
+- calculate the stats starting from a certain date (to see how many hours were \
+    spent studying during a school term or for an exam)
