@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SAVE_PATH="$notes/1-personal/study-log"
+SAVE_PATH="$notes/spaces/life/study-log"
 
 if [ -f "$SAVE_PATH/study_stats.md" ]; then
     echo "Creating a backup"
